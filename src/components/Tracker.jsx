@@ -1,5 +1,4 @@
 import axios from "axios";
-import { useEffect } from "react";
 
 function Tracker() {
   async function fetchData() {
@@ -15,9 +14,7 @@ function Tracker() {
     }
   }
 
-  useEffect(() => {
-    fetchData();
-  }, []);
+  fetchData();
 
   return <div className="font-star">tracker</div>;
 }
