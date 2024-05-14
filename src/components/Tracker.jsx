@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { CiSatellite1 } from "react-icons/ci";
 import axios from "axios";
 import {
   twoline2satrec,
@@ -47,12 +48,14 @@ function Tracker() {
 
   return (
     <div className="font-star">
+      {<CiSatellite1 size="64" className="mx-auto" />}
       {data ? (
         <>
+          <p>TLE:</p>
           <p>{data.line1}</p>
           <p>{data.line2}</p>
-          <p>
-            Latitude: ${lat}, Longitude: ${long}
+          <p className="font-lato uppercase">
+            Latitude: {lat}, Longitude: {long}
           </p>
         </>
       ) : (
