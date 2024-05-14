@@ -1,7 +1,28 @@
 import "./App.css";
 import React, { useEffect } from "react";
+import { useState } from "react";
+import Tracker from "./components/Tracker.jsx";
 
 function App() {
+  const [showComponent, setShowComponent] = useState(false);
+
+  const handleClick = () => {
+    const header = document.getElementById("header");
+    const lowerText = document.getElementById("lowertext");
+    const startButton = document.getElementById("startbutton");
+
+    header.style.transition = "opacity 2s ease";
+    header.style.opacity = 0;
+    lowerText.style.transition = "opacity 2s ease";
+    lowerText.style.opacity = 0;
+    startButton.style.transition = "opacity 2s ease";
+    startButton.style.opacity = 0;
+
+    setTimeout(() => {
+      setShowComponent(true);
+    }, 2000);
+  };
+
   useEffect(() => {
     const canvas = document.getElementById("starCanvas");
     const ctx = canvas.getContext("2d");
@@ -78,11 +99,21 @@ function App() {
         className="fixed top-0 left-0 w-full h-full z-0"
       />
       <div className="absolute inset-0 flex justify-center items-center z-10">
-        <div className="text-center">
-          <h1 className="font-apple text-6xl">Starlight</h1>
-          <p className="font-star uppercase">
+        <div className="text-center" id="contentbox">
+          <h1 className="font-apple text-6xl" id="header">
+            Starlight
+          </h1>
+          <p className="font-star uppercase" id="lowertext">
             tracking the interational space station
           </p>
+          <button
+            className="mt-3 px-12 py-30 bg-night border-2 border-solid border-white font-lato uppercase hover:bg-white hover:text-black"
+            onClick={handleClick}
+            id="startbutton"
+          >
+            Start
+          </button>
+          {showComponent && <Tracker />}
         </div>
       </div>
     </div>
