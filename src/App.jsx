@@ -1,5 +1,5 @@
 import "./App.css";
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useState } from "react";
 import Tracker from "./components/Tracker.jsx";
 
@@ -36,7 +36,7 @@ function App() {
     function Star(x, y, radius, velocity) {
       this.x = x;
       this.y = y;
-      this.radius = radius;
+      this.radius = Math.abs(radius);
       this.velocity = velocity;
       this.maxRadius = radius + Math.random() * 3;
       this.minRadius = radius;
@@ -45,7 +45,7 @@ function App() {
 
     Star.prototype.draw = function () {
       ctx.beginPath();
-      ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
+      ctx.arc(this.x, this.y, Math.abs(this.radius), 0, Math.PI * 2, false);
       ctx.fillStyle = "white";
       ctx.fill();
     };
@@ -63,7 +63,7 @@ function App() {
     for (let i = 0; i < numStars; i++) {
       let x = Math.random() * canvas.width;
       let y = Math.random() * canvas.height;
-      let radius = Math.random() * 1.5;
+      let radius = Math.abs(Math.random() * 1.5);
       let velocity = Math.random() * 0.02;
       stars.push(new Star(x, y, radius, velocity));
     }
