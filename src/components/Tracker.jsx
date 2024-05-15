@@ -14,6 +14,7 @@ function Tracker() {
   const [data, setData] = useState(null);
   const [lat, setLat] = useState(null);
   const [long, setLong] = useState(null);
+  const [url, setUrl] = useState("");
 
   useEffect(() => {
     async function fetchData() {
@@ -33,10 +34,11 @@ function Tracker() {
           const geodeticCoords = eciToGeodetic(positionEci, gmst);
           const latitude = degreesLat(geodeticCoords.latitude);
           const longitude = degreesLong(geodeticCoords.longitude);
-          // console.log(latitude);
-          // console.log(longitude);
           setLat(latitude);
           setLong(longitude);
+          setUrl(
+            `https://www.latlong.net/c/?lat=${latitude}&long=${longitude}`
+          );
         }
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -55,7 +57,9 @@ function Tracker() {
           <p>{data.line1}</p>
           <p>{data.line2}</p>
           <p className="font-lato uppercase">
-            Latitude: {lat}, Longitude: {long}
+            <a href={url} target="_blank" rel="noopener noreferrer">
+              Latitude: {lat}, Longitude: {long}{" "}
+            </a>
           </p>
         </div>
       ) : (
