@@ -6,17 +6,14 @@ function App() {
   const [showComponent, setShowComponent] = useState(false);
 
   const handleClick = () => {
-    const header = document.getElementById("header");
-    const lowerText = document.getElementById("lowertext");
-    const startButton = document.getElementById("startbutton");
-
-    header.style.transition = "opacity 2s ease";
-    header.style.opacity = 0;
-    lowerText.style.transition = "opacity 2s ease";
-    lowerText.style.opacity = 0;
-    startButton.style.transition = "opacity 2s ease";
-    startButton.style.opacity = 0;
-
+    const elements = ["header", "lowertext", "startbutton"];
+    
+    elements.forEach((id) => {
+      const element = document.getElementById(id);
+      element.style.transition = "opacity 2s ease";
+      element.style.opacity = 0;
+    });
+  
     setTimeout(() => {
       setShowComponent(true);
     }, 2000);

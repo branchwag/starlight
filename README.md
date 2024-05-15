@@ -1,8 +1,8 @@
 # Starlight
 
-An app to display tracking for the International Space Station. Information sourced from NASA TLE API.
-https://api.nasa.gov/
-https://tle.ivanstanojevic.me/#/tle/25544
-https://tle.ivanstanojevic.me/api/tle/25544
+An app to display tracking for the International Space Station. Information sourced from NASA TLE API. </br>
+https://api.nasa.gov/ </br>
+https://tle.ivanstanojevic.me/#/tle/25544 </br>
 
-Under construction.
+</br>
+<img src="./starlight.gif" alt= "Home Page">

@@ -50,14 +50,14 @@ function Tracker() {
     <div className="font-star">
       {<CiSatellite1 size="64" className="mx-auto" />}
       {data ? (
-        <>
+        <div className="ease-in">
           <p>TLE:</p>
           <p>{data.line1}</p>
           <p>{data.line2}</p>
           <p className="font-lato uppercase">
             Latitude: {lat}, Longitude: {long}
           </p>
-        </>
+        </div>
       ) : (
         <p>Loading data...</p>
       )}
